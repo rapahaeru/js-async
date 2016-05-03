@@ -10,8 +10,6 @@ define("calculaImc", function(){
 			console.log(imc)
 			return imc;
 		}
-
-
 	}
 
 	function montaPaciente(pacienteTr){
@@ -29,27 +27,26 @@ define("calculaImc", function(){
 		return paciente;
 	}
 
-	var calculaTodosImcs = function(){
 
-		var trpacientes = document.getElementsByClassName("paciente");
+	return {
+		calcula: function(){},
 
-		for (i = 0; i<= trpacientes.length -1; i++){
+		calculaTodosImcs: function (){
+			var trpacientes = document.getElementsByClassName("paciente");
 
-			var pacienteTr 	= trpacientes[i];
-			var pacienteAtual = montaPaciente(pacienteTr); // chama a função que montam os pacientes
-			var imc = pacienteAtual.pegaImc() // chamando a função que calcula IMC
+			for (i = 0; i<= trpacientes.length -1; i++){
 
-			var tdimc = pacienteTr.getElementsByClassName("info-imc")[0];
+				var pacienteTr 	= trpacientes[i];
+				var pacienteAtual = montaPaciente(pacienteTr); // chama a função que montam os pacientes
+				var imc = pacienteAtual.pegaImc() // chamando a função que calcula IMC
 
-			tdimc.textContent = imc;
+				var tdimc = pacienteTr.getElementsByClassName("info-imc")[0];
 
+				tdimc.textContent = imc;
+
+			}
 		}
-
 	}
-
-	var botao = document.getElementById('calcula-imcs');
-	botao.addEventListener('click', calculaTodosImcs);
-	botao.addEventListener('click', function() { console.log('segundo execucao de uma funcao no evento on click')})
 
 });
 
